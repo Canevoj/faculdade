@@ -1,0 +1,28 @@
+#include <stdio.h>
+// Modularidade do código para facilitar a manutenção e a legibilidade
+
+// Função para entrada de dados
+void entradaDados() {
+    // Código para a função de entradaDados (colocar todos os scanf aqui)
+
+}
+
+float calcularMedia() {
+    // código para calcular a média
+}
+
+// Função para exibir a média
+void exibirMedia() {
+    // código para exibir a média
+}
+
+int main() {
+    // Chamada da função de entrada de dados
+    entradaDados();
+    // Cálculo da média
+    float media = calcularMedia();
+    // Exibição da média
+    exibirMedia(media);
+
+    return 0;
+}

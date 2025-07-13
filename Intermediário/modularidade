@@ -16,7 +16,7 @@ void exibirMedia() {
     // código para exibir a média
 }
 
-int main() {
+int main() { 
     // Chamada da função de entrada de dados
     entradaDados();
     // Cálculo da média

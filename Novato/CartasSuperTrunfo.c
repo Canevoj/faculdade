@@ -2,64 +2,83 @@
 
 int main()
 {
-    // Comecei declarando as variáveis necessárias para cada país deixando as variáveis de mesmo tipo agrupadas para facilitar a leitura do código.
-    char player[20], nome1[20], nome2[20]; // Nome do jogador/usuário e dos países em char, pois são strings e limitei o tamanho para 20 caracteres 
-    int povo1, povo2, pontos1, pontos2; // População e pontos turísticos em formato int, pois são números inteiros
-    float area1, area2, pib1, pib2; // Área e PIB dos países em float, pois podem ter casas decimais
+    // Declaração das variáveis principais do jogo
+    char player[20], estado1[50], estado2[50], cidade1[50], cidade2[50]; // Nome do jogador, estados e cidades, juntei as variaveis de mesmo formato para facilitar a leitura
+    char codigo1[5], codigo2[5]; // Códigos das cartas (ex: SP01)
+    int povo1, povo2, pontos1, pontos2; // População e pontos turísticos
+    float area1, area2, pib1, pib2; // Área e PIB
 
-    // Iniciei o jogo com uma mensagem de boas-vindas e solicitei o nome do jogador para personalizar a experiência.
-    printf("Seja muito bem-vindo ao Super Trunfo Países!\n");
-    printf("Qual o seu nome?\n");
-    scanf("%s", player);
+    // Mensagens iniciais para ambientar o usuário
+    printf("Seja muito bem-vindo ao Super Trunfo - Países!\n");
+    printf("Neste jogo teremos cartas de 8 estados sendo 4 cidades de cada estado.\n");
+    printf("Você será o jogador que irá cadastrar as cidades.\n");
+    printf("Cada carta terá um código único, que será composto pela SIGLA do estado e o número referente a cada uma das 4 cidades. Exemplo: SP01, SC02.\n");
+    printf("Vamos começar!\n");
+
+    // Cadastro do nome do jogador
+    printf("Qual o seu primeiro nome?\n");
+    scanf("%19s", player); // Lê o nome do jogador, limitando a 19 caracteres para evitar overflow
+
     printf("Muito prazer em conhecer você, %s! Vamos começar o jogo!\n", player);
-    printf("Você vai precisar cadastrar dois países para jogar.\n");
+    printf("Você vai precisar cadastrar duas cidades para jogar.\n");
 
-    // Solicitei os dados dos países, um de cada vez, com instruções claras sobre o que deveria ser informado.
-    printf("--- PRIMEIRO PAÍS ---\n");
+    // Cadastro da primeira cidade
+    printf("--- PRIMEIRA CARTA ---\n");
 
-    printf("Qual o nome do primeiro país?\n");
-    scanf("%s", nome1); // Aqui a função scanf lê o nome do país digitado pelo usuário e armazena na variável nome1
+    printf("Qual o nome do estado onde está localizada a primeira cidade? (sem espaço)\n");
+    scanf("%49s", estado1); 
 
-    printf("Quantos habitantes existem no(a) %s? (digite o número completo, sem pontos ou vírgulas)\n", nome1); // Como estou usando o formato %d, o usuário deve digitar o número inteiro sem formatação
+    printf("Qual o nome da primeira cidade? (sem espaço)\n");
+    scanf("%49s", cidade1);
+
+    printf("Crie um código para essa carta (use 2 letras e 2 números, por exemplo: SP01):\n", estado1);
+    scanf("%s", codigo1);
+
+    printf("Quantos habitantes existem em (no) %s? (digite o número completo, sem pontos ou vírgulas)\n", cidade1);
     scanf("%d", &povo1);
 
-    printf("Qual a área do(a) %s em km²? (use ponto para decimais, se houver)\n", nome1); // A área pode ter casas decimais, então uso %f para ler um número de ponto flutuante
+    printf("Qual a área de (o) %s em km²? (use ponto para decimais, se houver)\n", cidade1);
     scanf("%f", &area1);
 
-    printf("Qual o PIB do(a) %s em bilhões de dólares? (use ponto para decimais)\n", nome1); // PIB também pode ter casas decimais, então uso %f novamente
+    printf("Qual o PIB do(a) %s em bilhões de dólares? (use ponto para decimais)\n", cidade1);
     scanf("%f", &pib1);
 
-    printf("Quantos pontos turísticos tem no(a) %s? (reconhecidos pela UNESCO)\n", nome1); 
+    printf("Quantos pontos turísticos existem em (no) %s?\n", cidade1);
     scanf("%d", &pontos1);
 
-    // Após o cadastro do primeiro país, o programa irá informar ao usuário que agora ele deve cadastrar o segundo país.
-    printf("Muito bem, agora vamos cadastrar o segundo país.\n");
-    
-    // Aqui seguirá o mesmo processo de cadastro do segundo país, mudando apenas as variáveis e mensagens para refletir o segundo país.
-    printf("--- SEGUNDO PAÍS ---\n");
+    printf("Muito bem, agora vamos cadastrar a segunda cidade.\n");
 
-    printf("Qual o nome do segundo país?\n");
-    scanf("%s", nome2);
+    // Cadastro da segunda cidade
+    printf("--- SEGUNDA CARTA ---\n");
 
-    printf("Quantos habitantes existem no(a) %s?  (digite o número completo, sem pontos ou vírgulas)\n", nome2);
+    printf("Qual o nome do estado onde está localizada a segunda cidade?\n");
+    scanf("%49s", estado2); 
+
+    printf("Qual o nome da segunda cidade?\n");
+    scanf("%49s", cidade2); 
+
+    printf("Crie um código para essa carta (use 2 letras e 2 números, por exemplo: SP01):\n", estado2);
+    scanf("%s", codigo2);
+
+    printf("Quantos habitantes existem em (no) %s? (digite o número completo, sem pontos ou vírgulas)\n", cidade2);
     scanf("%d", &povo2);
 
-    printf("Qual a área do(a) %s em km²? (use ponto para decimais, se houver)\n", nome2);
+    printf("Qual a área de (o) %s em km²? (use ponto para decimais, se houver)\n", cidade2);
     scanf("%f", &area2);
 
-    printf("Qual o PIB do(a) %s em bilhões de dólares? (use ponto para decimais)\n", nome2);
+    printf("Qual o PIB do(a) %s em bilhões de dólares? (use ponto para decimais)\n", cidade2);
     scanf("%f", &pib2);
 
-    printf("Quantos pontos turísticos tem no(a) %s? (reconhecidos pela UNESCO)\n", nome2);
+    printf("Quantos pontos turísticos existem em (no) %s?\n", cidade2);
     scanf("%d", &pontos2);
 
-    printf("\nPerfeito! Os países foram cadastrados com sucesso!\n");
-    // Após o cadastro, o programa irá exibir os dados dos países cadastrados para que o usuário possa conferir se tudo foi inserido corretamente.
-    printf("Vamos conferir os países cadastrados:\n");
+    // Exibe o resumo das cidades cadastradas
+    printf("\nPerfeito! As cidades foram cadastradas com sucesso!\n");
+    printf("Vamos conferir as cartas\n");
 
-    // Exibindo os dados dos países cadastrados com formatação adequada para facilitar a leitura.
-    printf("\n→ País 1: %s\n• População: %'d habitantes\n• Área: %'.0f km²\n• PIB: US$ %.2f bilhões\n• Quantidade de pontos turísticos: %d\n", nome1, povo1, area1, pib1, pontos1);
-    printf("\n→ País 2: %s\n• População: %'d habitantes\n• Área: %'.0f km²\n• PIB: US$ %.2f bilhões\n• Quantidade de pontos turísticos: %d\n", nome2, povo2, area2, pib2, pontos2);
-    
+    printf("\n--- CARTA 1 ---\n→ Estado: %s\n→ Cidade: %s\n• População: %d habitantes\n• Área: %.0f km²\n• PIB: US$ %.2f bilhões\n• Quantidade de pontos turísticos: %d\n# Código: %s\n", estado1, cidade1, povo1, area1, pib1, pontos1, codigo1);
+
+    printf("\n--- CARTA 2 ---\n→ Estado: %s\n→ Cidade: %s\n• População: %d habitantes\n• Área: %.0f km²\n• PIB: US$ %.2f bilhões\n• Quantidade de pontos turísticos: %d\n# Código: %s\n", estado2, cidade2, povo2, area2, pib2, pontos2, codigo2);
+
     return 0;
 }
